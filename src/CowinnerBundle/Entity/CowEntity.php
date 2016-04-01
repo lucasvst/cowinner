@@ -67,4 +67,15 @@ class CowEntity implements ICowEntity
 	{
 		return $this->fatIndex;
 	}
+
+	public function setLifeTime($lifeTime)
+	{
+		$this->lifeTime = $lifeTime;
+		return $this;
+	}
+
+	public function getLifeTime()
+	{
+		return $this->lifeTime;
+	}
 }

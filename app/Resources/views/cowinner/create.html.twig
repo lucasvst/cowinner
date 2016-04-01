@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <h1><span>Lets add a</span> Cow!</h1>
-            <p>
-                Muuu.
-            </p>
+    
+    <div class="content">
+        
+        <h1><span>Lets add a</span> Cow!</h1>
+        <p>
+            Muuu.
+        </p>
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
 
-            <a href="{{ path('home') }}">bring me back home...</a>
+        <a href="{{ path('home') }}">bring me back home...</a>
 
-        </div>
     </div>
+
 {% endblock %}

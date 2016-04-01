@@ -1,40 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
             
-            <h1><span>Welcome to</span> Cowinner!</h1>
+            <div class="jumbotron">
+                <h2>
+                    Welcome to <br>
+                    <strong>Cowinner!</strong>
+                </h2>
+            </div>
                 
-            <table>
-                <caption>cow list</caption>
+            {% if costs is not empty %}
+
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>weight</th>
-                        <th>age</th>
-                        <th>price</th>
-                        <th>monthlyGrass</th>
-                        <th>annualCost</th>
-                        <th>winner</th>
+                        <th>Price</th>
+                        <th>Age</th>
+                        <th>Weight</th>
+                        <th>Monthly Grass</th>
+                        <th>Annual Cost</th>
+                        <th>Life Cost</th>
+                        <th>Winner</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for cost in costs %}
                     <tr>
-                        <td>{{ cost.cow.weight }}</td>
-                        <td>{{ cost.cow.age }}</td>
-                        <td>{{ cost.cow.price }}</td>
-                        <td>{{ cost.annualCost }}</td>
-                        <td>{{ cost.monthlyGrass }}</td>
+                        <td>{{ cost.cow.price }} R$</td>
+                        <td>{{ cost.cow.age }} anos</td>
+                        <td>{{ cost.cow.weight }} kg</td>
+                        <td>{{ cost.monthlyGrass }} Kg</td>
+                        <td>{{ cost.annualCost }} R$</td>
+                        <td>{{ cost.lifeCost }} R$</td>
                         <td>{{ cost.winner }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
 
-            <h2>Add a cow!</h2>
-            <a href="{{ path('create') }}">Create an entry</a>
+            {% endif %}
+
+            <a href="{{ path('create') }}" class="btn btn-info btn-block">Add a cow!</a>
 
         </div>
-    </div>
+
 {% endblock %}

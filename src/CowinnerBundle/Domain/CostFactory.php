@@ -27,7 +27,8 @@ class CostFactory
 	{
 		$this->cost
 			->setMonthlyGrass($this->calculateMonthlyGrass())
-			->setAnnualCost($this->calculateAnnualCost());
+			->setAnnualCost($this->calculateAnnualCost())
+			->setLifeCost($this->calculateLifeCost());
 	}
 
 	private function calculateMonthlyGrass()
@@ -45,6 +46,11 @@ class CostFactory
 
 	private function calculateAnnualCost()
 	{
-		return ( $this->cost->getMonthlyGrass() * 12 ) * $this->cost->getGrassPrice();
+		return ( $this->cost->getMonthlyGrass() * 12 ) * $this->cost->getGrassPrice(); // R$
+	}
+
+	private function calculateLifeCost()
+	{
+		return $this->cost->getAnnualCost() * ($this->cost->getCow()->getLifeTime() - $this->cost->getCow()->getAge());
 	}
 }

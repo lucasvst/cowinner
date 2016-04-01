@@ -34,6 +34,13 @@ class CostEntity implements ICostEntity
 	 */
 	protected $winner;
 
+	/**
+	 * @var $annualCost
+	 *
+	 * @Type("double")
+	 */
+	protected $lifeCost;
+
 	protected $cow;
 
 	public function setCow($cow)
@@ -66,6 +73,17 @@ class CostEntity implements ICostEntity
 	public function setAnnualCost($annualCost)
 	{
 		$this->annualCost = $annualCost;
+		return $this;
+	}
+
+	public function getLifeCost()
+	{
+		return $this->lifeCost;
+	}
+
+	public function setLifeCost($lifeCost)
+	{
+		$this->lifeCost = $lifeCost;
 		return $this;
 	}
 

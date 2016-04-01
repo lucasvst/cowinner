@@ -8,6 +8,8 @@ class CostArbitrator
 
 	public function arbitrate($costs)
 	{
+		// c
+
 		$this->costs = $costs;
 		$this->costs[0]->setWinner(true);
 		return $this->costs;

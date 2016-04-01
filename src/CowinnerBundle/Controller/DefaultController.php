@@ -26,27 +26,25 @@ class DefaultController extends Controller
     public function listAction()
     {        
         $data = $this->get('cow_service')->listCow();
-        
-        // var_dump($data);exit;
 
         $costs = [];
 
-        if (!empty($data)) {
-
-        $cows = $this->serializer
-            ->deserialize($data, 'array<CowinnerBundle\Entity\CowEntity>', 'json'); // move to cow service
-
-            var_dump($cows);exit;
+        try { // sometimes guzzle comes with empty stream =/
+            
+            $cows = $this->serializer
+                ->deserialize($data, 'array<CowinnerBundle\Entity\CowEntity>', 'json');
 
             foreach ( $cows as $cow ) {
                 $costs[] = $this->get('cost_factory')->build($cow);
             }
 
             $costs = $this->get('cost_arbitrator')->arbitrate($costs);
-            
-        }
+        
+        } catch (\Exception $e) {
 
-        return $this->render('cowinner/list.html.twig', compact($costs));
+        }            
+
+        return $this->render('cowinner/list.html.twig', compact('costs'));
     }
 
     /**
