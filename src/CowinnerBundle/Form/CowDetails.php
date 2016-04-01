@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class CowDetails extends AbstractType
 {
@@ -13,7 +14,7 @@ class CowDetails extends AbstractType
     {
         $builder
             ->add('age', TextType::class)
-            ->add('price', TextType::class)
+            ->add('price', MoneyType::class)
             ->add('weight', TextType::class)
             ->add('add', SubmitType::class, array('label' => 'Add cow!'))
         ;

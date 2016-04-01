@@ -23,7 +23,7 @@ class Cow
 	/**
 	 * @var int $price
 	 *
-	 * @Type("integer")
+	 * @Type("double")
 	 */
 	protected $price;
 
