@@ -16,14 +16,8 @@ class DefaultController extends Controller
      */
     public function listAction()
     {        
-        $data = $this->get('cow_service')->listCow();
-
-        $cows = $this->get('serializer')
-                ->denormalize($data, Cow::class, ['groups' => ['details']]);
-
-        print_r($cows);exit;
-
-        // return $this->render('cowinner/list.html.twig', compact('cows'));
+        $cows = $this->get('cow_service')->listCow();
+        return $this->render('cowinner/list.html.twig', compact('cows'));
     }
 
     /**
