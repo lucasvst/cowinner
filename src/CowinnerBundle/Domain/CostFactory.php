@@ -26,7 +26,25 @@ class CostFactory
 	private function calculate()
 	{
 		$this->cost
-			->setGrassPerWeight(23)
-			->setAnnualCost(25);
+			->setMonthlyGrass($this->calculateMonthlyGrass())
+			->setAnnualCost($this->calculateAnnualCost());
+	}
+
+	private function calculateMonthlyGrass()
+	{
+		$weight = $this->cost->getCow()->getWeight();
+		$fatIndex = $this->cost->getCow()->getFatIndex();
+
+		$monthlyGrass = ( $weight * $fatIndex ) * 30; //kg
+
+		// echo $monthlyGrass;
+		// exit;
+
+		return $monthlyGrass;
+	}
+
+	private function calculateAnnualCost()
+	{
+		return ( $this->cost->getMonthlyGrass() * 12 ) * $this->cost->getGrassPrice();
 	}
 }

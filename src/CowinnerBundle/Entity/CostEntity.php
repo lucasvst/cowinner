@@ -6,12 +6,19 @@ use JMS\Serializer\Annotation\Type;
 
 class CostEntity implements ICostEntity
 {
+	protected $grassPrice = 0.20;
+
+	public function getGrassPrice()
+	{
+		return $this->grassPrice;
+	}
+
 	/**
 	 * @var $grassPerWeight
 	 *
 	 * @Type("integer")
 	 */
-	protected $grassPerWeight;
+	protected $monthlyGrass;
 	
 	/**
 	 * @var $annualCost
@@ -40,15 +47,15 @@ class CostEntity implements ICostEntity
 		return $this->cow;
 	}
 
-	public function setGrassPerWeight($grassPerWeight)
+	public function setMonthlyGrass($monthlyGrass)
 	{
-		$this->grassPerWeight = $grassPerWeight;
+		$this->monthlyGrass = $monthlyGrass;
 		return $this;
 	}
 
-	public function getGrassPerWeight()
+	public function getMonthlyGrass()
 	{
-		return $this->grassPerWeight;
+		return $this->monthlyGrass;
 	}
 
 	public function getAnnualCost()

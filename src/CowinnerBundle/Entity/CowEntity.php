@@ -6,6 +6,9 @@ use JMS\Serializer\Annotation\Type;
 
 class CowEntity implements ICowEntity
 {
+	protected $lifeTime = 20;
+	protected $fatIndex = 0.03;
+
 	/**
 	 * @var $weight
 	 *
@@ -58,5 +61,10 @@ class CowEntity implements ICowEntity
 	{
 		$this->price = $price;
 		return $this;
+	}
+
+	public function getFatIndex()
+	{
+		return $this->fatIndex;
 	}
 }
