@@ -17,12 +17,8 @@ class CowService
 
 	public function listCow()
 	{
-		$mock = "[\n\t{\n\t\t\"id\": 13,\n\t\t\"weight\": 250,\n\t\t\"age\": 19,\n\t\t\"price\": 800\n\t},\n\t{\n\t\t\"id\": 14,\n\t\t\"weight\": 254,\n\t\t\"age\": 17,\n\t\t\"price\": 300\n\t}\n]";
-		// $mock = "{\n\t\t\"id\": 13,\n\t\t\"weight\": 250,\n\t\t\"age\": 19,\n\t\t\"price\": 800\n\t}";
-
-		return $mock;
-
-		return $this->api->get('cows');
+		$res = $this->api->get('cows');
+		return $res->getBody();
 	}
 
 	public function create($cow)
