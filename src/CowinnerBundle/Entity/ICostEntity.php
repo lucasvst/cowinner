@@ -2,7 +2,7 @@
 
 namespace CowinnerBundle\Entity;
 
-class Grass
+interface ICostEntity
 {
-	public $price;
+
 }

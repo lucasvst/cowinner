@@ -4,7 +4,7 @@ namespace CowinnerBundle\Entity;
 
 use JMS\Serializer\Annotation\Type;
 
-class Cow
+class CowEntity implements ICowEntity
 {
 	/**
 	 * @var int $weight
@@ -26,9 +26,6 @@ class Cow
 	 * @Type("double")
 	 */
 	protected $price;
-
-	protected $lifeAverage = 20;
-	protected $foodPerWeight;
 
 	public function getWeight()
 	{

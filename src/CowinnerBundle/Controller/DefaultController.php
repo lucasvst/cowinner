@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use JMS\Serializer\SerializerBuilder;
 
-use CowinnerBundle\Entity\Cow;
+use CowinnerBundle\Entity\CowEntity as Cow;
 use CowinnerBundle\Form\CowDetails;
 
 class DefaultController extends Controller
@@ -26,11 +26,17 @@ class DefaultController extends Controller
     public function listAction()
     {        
         $data = $this->get('cow_service')->listCow();
-
         $cows = $this->serializer
-            ->deserialize($data, 'array<CowinnerBundle\Entity\Cow>', 'json');
+            ->deserialize($data, 'array<CowinnerBundle\Entity\CowEntity>', 'json'); // move to cow service
 
-        return $this->render('cowinner/list.html.twig', compact('cows'));
+        $costs = [];
+        foreach ( $cows as $cow ) {
+            $costs[] = $this->get('cost_factory')->build($cow);
+        }
+
+        // print_r($costs);exit;
+
+        return $this->render('cowinner/list.html.twig', compact('costs'));
     }
 
     /**

@@ -16,11 +16,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for cow in cows %}
+                    {% for cost in costs %}
                     <tr>
-                        <td>{{ cow.weight }}</td>
-                        <td>{{ cow.age }}</td>
-                        <td>{{ cow.price }}</td>
+                        <td>{{ cost.cow.weight }}</td>
+                        <td>{{ cost.cow.age }}</td>
+                        <td>{{ cost.cow.price }}</td>
+                        <td>{{ cost.grassPerWeight }}</td>
+                        <td>{{ cost.annualCost }}</td>
+                        <td>{{ cost.winner }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
