@@ -16,7 +16,7 @@ class DefaultController extends Controller
      */
     public function listAction()
     {        
-        $data = $this->get('cow_service')->list();
+        $data = $this->get('cow_service')->listCow();
 
         $cows = $this->get('serializer')
                 ->denormalize($data, Cow::class, ['groups' => ['details']]);

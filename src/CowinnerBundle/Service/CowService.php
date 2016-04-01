@@ -15,7 +15,7 @@ class CowService
 		$this->api = $this->container->get('cow_api');
 	}
 
-	public function list()
+	public function listCow()
 	{
 		$mock = "[\r\n    {\r\n        \"id\": 10,\r\n        \"weight\": 200,\r\n        \"age\": 200,\r\n        \"price\": 1500\r\n    },\r\n    {\r\n        \"id\": 12,\r\n        \"weight\": 180,\r\n        \"age\": 15,\r\n        \"price\": 1500\r\n    },\r\n    {\r\n        \"id\": 13,\r\n        \"weight\": 250,\r\n        \"age\": 19,\r\n        \"price\": 800\r\n    }\r\n]";
 
