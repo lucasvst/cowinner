@@ -34,7 +34,7 @@ class DefaultController extends Controller
             $costs[] = $this->get('cost_factory')->build($cow);
         }
 
-        // print_r($costs);exit;
+        $ordered = $this->get('cost_arbitrator')->arbitrate($costs);
 
         return $this->render('cowinner/list.html.twig', compact('costs'));
     }

@@ -17,7 +17,16 @@ class CostFactory
 	public function build(ICowEntity $cow)
 	{
 		$this->cost->setCow($cow);
+
+		$this->calculate();
 		
 		return $this->cost;
+	}
+
+	private function calculate()
+	{
+		$this->cost
+			->setGrassPerWeight(23)
+			->setAnnualCost(25);
 	}
 }

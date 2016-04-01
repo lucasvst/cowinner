@@ -7,21 +7,21 @@ use JMS\Serializer\Annotation\Type;
 class CowEntity implements ICowEntity
 {
 	/**
-	 * @var int $weight
+	 * @var $weight
 	 *
 	 * @Type("integer")
 	 */
 	protected $weight;
 	
 	/**
-	 * @var int $age
+	 * @var $age
 	 *
 	 * @Type("integer")
 	 */
 	protected $age;
 	
 	/**
-	 * @var int $price
+	 * @var $price
 	 *
 	 * @Type("double")
 	 */

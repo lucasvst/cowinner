@@ -3,26 +3,25 @@
 namespace CowinnerBundle\Entity;
 
 use JMS\Serializer\Annotation\Type;
-use CowinnerBundle\Entity\ICostEntity;
 
 class CostEntity implements ICostEntity
 {
 	/**
-	 * @var int $grassPerWeight
+	 * @var $grassPerWeight
 	 *
 	 * @Type("integer")
 	 */
 	protected $grassPerWeight;
 	
 	/**
-	 * @var int $annualCost
+	 * @var $annualCost
 	 *
 	 * @Type("double")
 	 */
 	protected $annualCost;
 	
 	/**
-	 * @var int $winner
+	 * @var $winner
 	 *
 	 * @Type("boolean")
 	 */
@@ -33,6 +32,7 @@ class CostEntity implements ICostEntity
 	public function setCow($cow)
 	{
 		$this->cow = $cow;
+		return $this;
 	}
 
 	public function getCow()
@@ -40,23 +40,36 @@ class CostEntity implements ICostEntity
 		return $this->cow;
 	}
 
-	protected function getGrassPerWeight()
+	public function setGrassPerWeight($grassPerWeight)
 	{
-
+		$this->grassPerWeight = $grassPerWeight;
+		return $this;
 	}
 
-	protected function setGrassPerWeight()
+	public function getGrassPerWeight()
 	{
-
+		return $this->grassPerWeight;
 	}
 
 	public function getAnnualCost()
 	{
-		
+		return $this->annualCost;
+	}
+
+	public function setAnnualCost($annualCost)
+	{
+		$this->annualCost = $annualCost;
+		return $this;
 	}
 
 	public function isWinner()
 	{
-		
+		return $this->winner;
+	}
+
+	public function setWinner($bool)
+	{
+		$this->winner = $bool;
+		return $this;
 	}
 }

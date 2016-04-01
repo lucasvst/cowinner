@@ -11,3 +11,7 @@ services:
     alias: guzzle.client.cow
   cost_factory:
     class: CowinnerBundle\Domain\CostFactory
+    scope: prototype
+  cost_arbitrator:
+    class: CowinnerBundle\Domain\CostArbitrator
+    scope: prototype
