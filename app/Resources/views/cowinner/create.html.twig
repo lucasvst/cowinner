@@ -3,23 +3,16 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <div id="welcome">
-                <h1><span>Lets add a</span> Cow!</h1>
-            </div>
+            <h1><span>Lets add a</span> Cow!</h1>
+            <p>
+                Muuu.
+            </p>
 
-            <div id="status">
-                <p>
-                    Muuu.
-                </p>
-            </div>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
 
-            <div id="next">
-                <p>
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
-                </p>
-            </div>
+            <a href="{{ path('home') }}">bring me back home...</a>
 
         </div>
     </div>

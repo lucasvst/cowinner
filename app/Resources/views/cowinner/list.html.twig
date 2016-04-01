@@ -8,16 +8,32 @@
             </div>
 
             <div id="status">
-                <p>
-                    {{cows}}
-                </p>
+                
+                <table>
+                    <caption>cow list</caption>
+                    <thead>
+                        <tr>
+                            <th>weight</th>
+                            <th>age</th>
+                            <th>price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cow in cows %}
+                        <tr>
+                            <td>{{ cow.weight }}</td>
+                            <td>{{ cow.age }}</td>
+                            <td>{{ cow.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
             </div>
 
             <div id="next">
-                <h2>Some H2</h2>
-                <p>
-                    Another paragraph.
-                </p>
+                <h2>Add a cow!</h2>
+                <a href="{{ path('create') }}">Create an entry</a>
             </div>
 
         </div>
