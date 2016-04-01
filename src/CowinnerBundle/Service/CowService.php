@@ -23,21 +23,6 @@ class CowService
 
 	public function create($cow)
 	{
-		return $this->api->post('cows', $cow);
-	}
-
-	public function retrieve($id)
-	{
-		return $this->api->get("cows/{$id}");
-	}
-
-	public function update($id, $cow)
-	{
-		return $this->api->put("cows/{$id}", $cow);
-	}
-
-	public function delete($cow)
-	{
-		return $this->api->delete("cows/{$id}", $cow);
+		return $this->api->post('cows', [ 'json' => $cow ]);
 	}
 }

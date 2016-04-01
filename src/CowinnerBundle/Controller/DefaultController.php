@@ -46,11 +46,11 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $data = $this->get('serializer')
-                ->normalize($request->request->get('cow_details'), null, ['groups' => ['details']]);
+                ->normalize($request->request->get('cow_details'));
             
             $this->get('cow_service')->create($data);
             
-            return $this->redirectToRoute('/');
+            return $this->redirect($this->generateUrl('home'));
         }
         
         return $this->render('cowinner/create.html.twig', array(
