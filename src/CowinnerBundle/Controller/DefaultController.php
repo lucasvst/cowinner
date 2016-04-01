@@ -46,7 +46,7 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $data = $this->get('serializer')
-                ->normalize($cow, null, ['groups' => ['details']]);
+                ->normalize($request->request->get('cow_details'), null, ['groups' => ['details']]);
             
             $this->get('cow_service')->create($data);
             
