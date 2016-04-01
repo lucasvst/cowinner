@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Lets add a</span> Cow!</h1>
+            </div>
+
+            <div id="status">
+                <p>
+                    Muuu.
+                </p>
+            </div>
+
+            <div id="next">
+                <p>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
