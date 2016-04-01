@@ -3,38 +3,31 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> Cowinner!</h1>
-            </div>
-
-            <div id="status">
+            
+            <h1><span>Welcome to</span> Cowinner!</h1>
                 
-                <table>
-                    <caption>cow list</caption>
-                    <thead>
-                        <tr>
-                            <th>weight</th>
-                            <th>age</th>
-                            <th>price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for cow in cows %}
-                        <tr>
-                            <td>{{ cow.weight }}</td>
-                            <td>{{ cow.age }}</td>
-                            <td>{{ cow.price }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <table>
+                <caption>cow list</caption>
+                <thead>
+                    <tr>
+                        <th>weight</th>
+                        <th>age</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cow in cows %}
+                    <tr>
+                        <td>{{ cow.weight }}</td>
+                        <td>{{ cow.age }}</td>
+                        <td>{{ cow.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-            </div>
-
-            <div id="next">
-                <h2>Add a cow!</h2>
-                <a href="{{ path('create') }}">Create an entry</a>
-            </div>
+            <h2>Add a cow!</h2>
+            <a href="{{ path('create') }}">Create an entry</a>
 
         </div>
     </div>
