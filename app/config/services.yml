@@ -9,7 +9,3 @@ services:
     arguments: ["@service_container"]
   cow_api:
     alias: guzzle.client.cow
-  get_set_method_normalizer:
-        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
-        tags:
-            - { name: serializer.normalizer }

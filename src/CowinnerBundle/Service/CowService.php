@@ -17,7 +17,8 @@ class CowService
 
 	public function listCow()
 	{
-		$mock = "[\r\n    {\r\n        \"id\": 10,\r\n        \"weight\": 200,\r\n        \"age\": 200,\r\n        \"price\": 1500\r\n    },\r\n    {\r\n        \"id\": 12,\r\n        \"weight\": 180,\r\n        \"age\": 15,\r\n        \"price\": 1500\r\n    },\r\n    {\r\n        \"id\": 13,\r\n        \"weight\": 250,\r\n        \"age\": 19,\r\n        \"price\": 800\r\n    }\r\n]";
+		$mock = "[\n\t{\n\t\t\"id\": 13,\n\t\t\"weight\": 250,\n\t\t\"age\": 19,\n\t\t\"price\": 800\n\t},\n\t{\n\t\t\"id\": 14,\n\t\t\"weight\": 254,\n\t\t\"age\": 17,\n\t\t\"price\": 300\n\t}\n]";
+		// $mock = "{\n\t\t\"id\": 13,\n\t\t\"weight\": 250,\n\t\t\"age\": 19,\n\t\t\"price\": 800\n\t}";
 
 		return $mock;
 

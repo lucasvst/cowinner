@@ -2,26 +2,32 @@
 
 namespace CowinnerBundle\Entity;
 
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Type;
 
 class Cow
 {
 	/**
-	 * @Groups({"details"})
+	 * @var int $weight
+	 *
+	 * @Type("integer")
 	 */
 	protected $weight;
 	
 	/**
-	 * @Groups({"details"})
+	 * @var int $age
+	 *
+	 * @Type("integer")
 	 */
 	protected $age;
 	
 	/**
-	 * @Groups({"details"})
+	 * @var int $price
+	 *
+	 * @Type("integer")
 	 */
 	protected $price;
 
-	protected $lifeAverage;
+	protected $lifeAverage = 20;
 	protected $foodPerWeight;
 
 	public function getWeight()
