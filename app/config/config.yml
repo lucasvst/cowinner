@@ -72,8 +72,8 @@ guzzle:
             base_url: "http://recrutamento.taginterativa.com.br/api/v1/"
 
             headers:
-                Accept: "application/json"
-                accessToken: "783db95cbd"
+                'Content-Type': "application/json"
+                'access-token': "7e44420723"
 
             options:
                 timeout: 30
