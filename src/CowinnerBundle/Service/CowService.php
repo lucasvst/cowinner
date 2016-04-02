@@ -18,7 +18,9 @@ class CowService
 	public function listCow()
 	{
 		$res = $this->api->get('cows');
-		// var_dump($res->getBody()->getContents());exit;
+
+		if ($res->getStatusCode() == 204)
+			throw new \Exception('Empty fields...', $res->getStatusCode());
 
 		return $res->getBody();
 	}

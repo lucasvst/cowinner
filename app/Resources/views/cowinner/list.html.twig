@@ -29,7 +29,11 @@
                     <td>{{ cost.monthlyGrass }} Kg</td>
                     <td>R$ {{ cost.annualCost }}</td>
                     <td>R$ {{ cost.lifeCost }}</td>
-                    <td><a href="{{ path('delete', { 'id': cost.cow.id }) }}" class="btn btn-danger">X</a></td>
+                    <td>
+                        {% if costs|length > 1 %}
+                        <a href="{{ path('delete', { 'id': cost.cow.id }) }}" class="btn btn-danger">X</a>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -36,17 +36,17 @@ class DefaultController extends Controller
             $cows = $this->serializer
                 ->deserialize($data, 'array<CowinnerBundle\Entity\CowEntity>', 'json');
 
-            foreach ( $cows as $cow ) {
-                $costs[] = $this->get('cost_factory')->build($cow);
-            }
-
-            $costs = $this->get('cost_arbitrator')->arbitrate($costs);
-        
         } catch (\Exceptiom $e) {
 
             $this->logMe($e);
             $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
         }
+
+            foreach ( $cows as $cow ) {
+                $costs[] = $this->get('cost_factory')->build($cow);
+            }
+
+            $costs = $this->get('cost_arbitrator')->arbitrate($costs);
 
         return $this->render('cowinner/list.html.twig', compact('costs'));
     }
