@@ -14,9 +14,10 @@ class CowDetails extends AbstractType
     {
         $builder
             ->add('age', TextType::class)
-            ->add('price', MoneyType::class)
+            ->add('price', MoneyType::class, ['currency'=>'BRL'])
             ->add('weight', TextType::class)
-            ->add('add', SubmitType::class, array('label' => 'Add cow!'))
+            ->add('add', SubmitType::class, array('label' => 'Muuu!', 
+            	'attr' => array('class' => 'btn-block btn-success')))
         ;
     }
 }

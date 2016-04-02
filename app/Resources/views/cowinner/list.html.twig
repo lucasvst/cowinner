@@ -17,6 +17,7 @@
                     <th>Monthly Grass</th>
                     <th>Annual Cost</th>
                     <th>Life Cost</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                     <td>{{ cost.monthlyGrass }} Kg</td>
                     <td>R$ {{ cost.annualCost }}</td>
                     <td>R$ {{ cost.lifeCost }}</td>
+                    <td><a href="{{ path('delete', { 'id': cost.cow.id }) }}" class="btn btn-danger">X</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

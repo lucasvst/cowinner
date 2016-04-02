@@ -1,7 +1,7 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
-   # cost_entity: CowinnerBundle\Entity\CostEntity
+   # 
 
 services:
   cow_service:

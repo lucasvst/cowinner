@@ -44,9 +44,9 @@ class DefaultController extends Controller
         
         } catch (\Exceptiom $e) {
 
-                $this->logMe($e);
-                $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
-            }           
+            $this->logMe($e);
+            $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
+        }
 
         return $this->render('cowinner/list.html.twig', compact('costs'));
     }
@@ -82,5 +82,23 @@ class DefaultController extends Controller
         return $this->render('cowinner/create.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function deleteAction($id)
+    {
+        try {
+        
+            $this->get('cow_service')->delete($id);
+        
+        } catch (\Exceptiom $e) {
+
+            $this->logMe($e);
+            $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');            
+        }
+
+        $this->addFlash('notice', 'Cow fired!');
+        return $this->redirectToRoute('home');
     }
 }

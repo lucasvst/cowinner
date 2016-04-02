@@ -3,6 +3,7 @@
 namespace CowinnerBundle\Entity;
 
 use JMS\Serializer\Annotation\Type;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CowEntity implements ICowEntity
 {
@@ -10,22 +11,43 @@ class CowEntity implements ICowEntity
 	protected $fatIndex = 0.03;
 
 	/**
+	 * @var $id
+	 *
+	 * @Type("integer")
+	 */
+	protected $id;
+
+	/**
 	 * @var $weight
 	 *
 	 * @Type("integer")
+	 * @Assert\NotBlank
+	 * @Assert\Type(
+     *     type="integer"
+     * )
 	 */
 	protected $weight;
 	
 	/**
 	 * @var $age
-	 *
+	 * 
 	 * @Type("integer")
+	 * @Assert\NotBlank
+	 * @Assert\LessThan(
+	 * 		value = 20
+	 * )
+	 * @Assert\Type(
+     *     type="integer"
+     * )
 	 */
 	protected $age;
 	
 	/**
 	 * @var $price
-	 *
+	 * @Assert\NotBlank
+	 * @Assert\Type(
+     *     type="double"
+     * )
 	 * @Type("double")
 	 */
 	protected $price;
@@ -77,5 +99,16 @@ class CowEntity implements ICowEntity
 	public function getLifeTime()
 	{
 		return $this->lifeTime;
+	}
+
+	public function setId($id)
+	{
+		$this->id = $id;
+		return $this;
+	}
+
+	public function getId()
+	{
+		return $this->id;
 	}
 }
