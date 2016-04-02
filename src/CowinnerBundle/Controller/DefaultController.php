@@ -27,20 +27,20 @@ class DefaultController extends Controller
      */
     public function listAction()
     {        
-        $data = $this->get('cow_service')->listCow();
-
         $costs = [];
 
         try {
+
+            $data = $this->get('cow_service')->listCow();
+
+        } catch (\Exceptiom $e) {
+            
+            $this->logMe($e);
+            $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
+        }        
             
             $cows = $this->serializer
                 ->deserialize($data, 'array<CowinnerBundle\Entity\CowEntity>', 'json');
-
-        } catch (\Exceptiom $e) {
-
-            $this->logMe($e);
-            $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
-        }
 
             foreach ( $cows as $cow ) {
                 $costs[] = $this->get('cost_factory')->build($cow);
