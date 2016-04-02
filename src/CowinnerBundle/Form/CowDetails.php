@@ -13,9 +13,9 @@ class CowDetails extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('age', TextType::class)
+            ->add('age', IntegerType::class)
             ->add('price', MoneyType::class, ['currency'=>'BRL'])
-            ->add('weight', TextType::class)
+            ->add('weight', IntegerType::class)
             ->add('add', SubmitType::class, array('label' => 'Muuu!', 
             	'attr' => array('class' => 'btn-block btn-success')))
         ;
