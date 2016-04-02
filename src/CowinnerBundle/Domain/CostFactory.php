@@ -36,21 +36,18 @@ class CostFactory
 		$weight = $this->cost->getCow()->getWeight();
 		$fatIndex = $this->cost->getCow()->getFatIndex();
 
-		$monthlyGrass = ( $weight * $fatIndex ) * 30; //kg
+		$monthlyGrass = ( $weight * $fatIndex ) * 30;
 
-		// echo $monthlyGrass;
-		// exit;
-
-		return $monthlyGrass;
+		return $monthlyGrass; //Kg
 	}
 
 	private function calculateAnnualCost()
 	{
-		return ( $this->cost->getMonthlyGrass() * 12 ) * $this->cost->getGrassPrice(); // R$
+		return ( $this->cost->getMonthlyGrass() * 12 ) * $this->cost->getGrassPrice(); //R$
 	}
 
 	private function calculateLifeCost()
 	{
-		return $this->cost->getAnnualCost() * ($this->cost->getCow()->getLifeTime() - $this->cost->getCow()->getAge());
+		return $this->cost->getAnnualCost() * ($this->cost->getCow()->getLifeTime() - $this->cost->getCow()->getAge()); //R$
 	}
 }

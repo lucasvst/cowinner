@@ -9,7 +9,31 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}<div class="container"></div>{% endblock %}
+        
+        <div class="container">
+            
+            <div class="jumbotron">
+                <h2>
+                    Welcome to <br>
+                    <strong>Cowinner!</strong>
+                </h2>
+            </div>
+
+            {% if app.session.flashbag.peekAll|length > 0 %}
+            {% for type, messages in app.session.flashbag.all %}
+                {% for message in messages %}
+                    <div class="{{ type ? type : '' }}">
+                        {{ message|trans({}, domain|default('messages')) }}
+                    </div>
+                {% endfor %}
+                {% endfor %}
+            {% endif %}
+        
+            {% block body %}{% endblock %}
+        
+        </div>
+        
         {% block javascripts %}{% endblock %}
+    
     </body>
 </html>

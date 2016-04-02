@@ -1,47 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-            
-            <div class="jumbotron">
-                <h2>
-                    Welcome to <br>
-                    <strong>Cowinner!</strong>
-                </h2>
-            </div>
                 
-            {% if costs is not empty %}
+        {% if costs is empty %}
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Price</th>
-                        <th>Age</th>
-                        <th>Weight</th>
-                        <th>Monthly Grass</th>
-                        <th>Annual Cost</th>
-                        <th>Life Cost</th>
-                        <th>Winner</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cost in costs %}
-                    <tr>
-                        <td>{{ cost.cow.price }} R$</td>
-                        <td>{{ cost.cow.age }} anos</td>
-                        <td>{{ cost.cow.weight }} kg</td>
-                        <td>{{ cost.monthlyGrass }} Kg</td>
-                        <td>{{ cost.annualCost }} R$</td>
-                        <td>{{ cost.lifeCost }} R$</td>
-                        <td>{{ cost.winner }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <p class="lead text-center">Ohhh...where's your cattle!?</p>
 
-            {% endif %}
+        {% else %}
 
-            <a href="{{ path('create') }}" class="btn btn-info btn-block">Add a cow!</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Price</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Monthly Grass</th>
+                    <th>Annual Cost</th>
+                    <th>Life Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cost in costs %}
+                <tr {% if cost.winner %} class="success" {% endif %}>
+                    <td>R$ {{ cost.cow.price }}</td>
+                    <td>{{ cost.cow.age }}</td>
+                    <td>{{ cost.cow.weight }} kg</td>
+                    <td>{{ cost.monthlyGrass }} Kg</td>
+                    <td>R$ {{ cost.annualCost }}</td>
+                    <td>R$ {{ cost.lifeCost }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-        </div>
+        {% endif %}
+
+        <a href="{{ path('create') }}" class="btn btn-info btn-block">Add a cow!</a>
 
 {% endblock %}

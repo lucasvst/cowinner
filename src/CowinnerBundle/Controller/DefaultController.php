@@ -13,6 +13,8 @@ use CowinnerBundle\Form\CowDetails;
 
 class DefaultController extends Controller
 {
+    use \CowinnerBundle\Traits\LoggerTrait;
+
     private $serializer;
 
     public function __construct()
@@ -29,7 +31,7 @@ class DefaultController extends Controller
 
         $costs = [];
 
-        try { // sometimes guzzle comes with empty stream =/
+        try {
             
             $cows = $this->serializer
                 ->deserialize($data, 'array<CowinnerBundle\Entity\CowEntity>', 'json');
@@ -40,9 +42,11 @@ class DefaultController extends Controller
 
             $costs = $this->get('cost_arbitrator')->arbitrate($costs);
         
-        } catch (\Exception $e) {
+        } catch (\Exceptiom $e) {
 
-        }            
+                $this->logMe($e);
+                $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
+            }           
 
         return $this->render('cowinner/list.html.twig', compact('costs'));
     }
@@ -59,10 +63,18 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $data = $this->get('serializer')
-                ->normalize($request->request->get('cow_details'));
+            try {
+
+                $data = $this->get('serializer')
+                    ->normalize($request->request->get('cow_details'));
             
-            $this->get('cow_service')->create($data);
+                $this->get('cow_service')->create($data);
+            
+            } catch (\Exceptiom $e) {
+
+                $this->logMe($e);
+                $this->addFlash('notice', 'Sorry, something went wrong...I\'ll fix asap.');
+            }
             
             return $this->redirect($this->generateUrl('home'));
         }
