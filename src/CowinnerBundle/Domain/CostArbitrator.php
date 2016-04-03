@@ -9,7 +9,7 @@ class CostArbitrator
 	public function arbitrate($costs)
 	{
 		usort($costs, function($a,$b) {
-            return strcmp($a->getLifeCost(), $b->getLifeCost());
+            return ( $a->getLifeCost() + $a->getCow()->getPrice() ) > ( $b->getLifeCost() + $b->getCow()->getPrice() );
         });
 
 		$costs[0]->setWinner(true);
